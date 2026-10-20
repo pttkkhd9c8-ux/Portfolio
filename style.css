@@ -1,0 +1,251 @@
+/* ===== Polices ===== */
+/* Place tes fichiers dans un dossier "fonts" à côté de index.html.
+   Adapte les noms de fichiers si les tiens sont différents. */
+@font-face {
+    font-family: "Basteleur";
+    src: url("fonts/Basteleur-Bold.woff2") format("woff2"),
+        url("fonts/Basteleur-Bold.ttf") format("truetype"),
+        url("fonts/Basteleur-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Basteleur Moonlight";
+    src: url("fonts/Basteleur-Moonlight.woff2") format("woff2"),
+        url("fonts/Basteleur-Moonlight.ttf") format("truetype"),
+        url("fonts/Basteleur-Moonlight.otf") format("opentype");
+    font-weight: 400;
+    font-display: swap;
+}
+
+/* ===== Couleurs et réglages ===== */
+:root {
+    --violet: #662d91;
+    --mauve-fonce: #4d4352;
+    --mauve-clair: #b2a7b8;
+    --vert-fonce: #005d4e;
+    --vert: #00927f;
+
+    --fond: #f1edf3;
+    --texte: #2a2230;
+
+    --titre: "Basteleur", Georgia, serif;
+    --lune: "Basteleur Moonlight", Georgia, serif;
+    --corps: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --largeur: 64rem;
+    --marge: 1.5rem;
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--fond);
+    color: var(--texte);
+    font-family: var(--corps);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--vert-fonce);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--violet);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--vert);
+    outline-offset: 3px;
+}
+
+/* ===== En-tête : le grand nom est l'élément fort de la page ===== */
+header {
+    background: var(--violet);
+    color: var(--fond);
+    padding: 3.5rem max(var(--marge), calc((100% - var(--largeur)) / 2 + var(--marge))) 2rem;
+    border-bottom: 1rem solid var(--vert);
+}
+
+header h1 {
+    margin: 0;
+    font-family: var(--titre);
+    font-weight: 700;
+    font-size: clamp(5rem, 22vw, 13rem);
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+}
+
+header>p {
+    margin: 1rem 0 2.5rem;
+    font-family: var(--lune);
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+}
+
+nav a {
+    color: var(--fond);
+    font-family: var(--lune);
+    font-size: 1.25rem;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--fond);
+    border-bottom-color: var(--mauve-clair);
+}
+
+/* ===== Contenu : titre à gauche, texte à droite ===== */
+main {
+    max-width: var(--largeur);
+    margin: 0 auto;
+    padding: 0 var(--marge);
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 3rem 0;
+    border-bottom: 2px solid var(--mauve-clair);
+    scroll-margin-top: 1rem;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+section>* {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-family: var(--lune);
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: var(--vert-fonce);
+}
+
+h3 {
+    font-family: var(--titre);
+    font-weight: 700;
+    font-size: 1.75rem;
+    line-height: 1.15;
+    color: var(--violet);
+    margin: 0 0 0.25rem;
+}
+
+article+article {
+    margin-top: 2rem;
+}
+
+article p {
+    margin: 0.25rem 0;
+}
+
+p {
+    max-width: 65ch;
+}
+
+@media (min-width: 48rem) {
+    section {
+        grid-template-columns: 12rem 1fr;
+        gap: 2rem;
+    }
+
+    section>h2 {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: start;
+        position: sticky;
+        top: 1.5rem;
+    }
+
+    section>*:not(h2) {
+        grid-column: 2;
+    }
+}
+
+/* ===== Compétences ===== */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#competences ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+}
+
+#competences li {
+    font-family: var(--lune);
+    font-size: 1.4rem;
+    padding-bottom: 0.15rem;
+    border-bottom: 4px solid var(--vert);
+}
+
+/* ===== Contact ===== */
+#contact a {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* ===== Pied de page ===== */
+footer {
+    background: var(--mauve-fonce);
+    color: var(--fond);
+    padding: 2rem max(var(--marge), calc((100% - var(--largeur)) / 2 + var(--marge)));
+    font-family: var(--lune);
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--fond);
+}
+
+footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 1rem;
+}
