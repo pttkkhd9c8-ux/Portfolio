@@ -18,7 +18,7 @@
             <a href="#contact">Contact</a>
         </nav>
     </header>
-    <link rel="stylesheet" href="style.css">
+
     <main>
         <section id="a-propos">
             <h2>À propos</h2>
@@ -30,7 +30,7 @@
                 <h3>Projet 1</h3>
             </article>
             <article>
-                <h3>Projet 2</h3>
+                <h3>Projet deux</h3>
             </article>
         </section>
 
