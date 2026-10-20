@@ -74,8 +74,8 @@ button:focus-visible {
 
 /* ===== En-tête ===== */
 header {
-    padding: 3rem max(var(--marge), calc((100% - var(--largeur)) / 2 + var(--marge))) 2.5rem solid var(--accent);
-    border-bottom: 4px solid var(--noir);
+    padding: 3rem max(var(--marge), calc((100% - var(--largeur)) / 2 + var(--marge))) 2.5rem;
+    border-bottom: 4px solid var(--accent);
 }
 
 header h1 {
