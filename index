@@ -1,13 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mon portfolio</title>
 </head>
 
 <body>
+
+    <header>
+        <h1>Léo</h1>
+        <p>Développeur web et Graphiste</p>
+        <nav>
+            <a href="#a-propos">À propos</a>
+            <a href="#projets">Projets</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="a-propos">
+            <h2>À propos</h2>
+            <p>Une courte présentation de vous.</p>
+        </section>
+
+        <section id="projets">
+            <h2>Projets</h2>
+            <article>
+                <h3>Projet 1</h3>
+                <p>Description courte du projet.</p>
+            </article>
+            <article>
+                <h3>Projet 2</h3>
+                <p>Description courte du projet.</p>
+            </article>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>votre@email.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Léo</p>
+    </footer>
 
 </body>
 
