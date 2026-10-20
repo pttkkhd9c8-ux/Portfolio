@@ -6,7 +6,7 @@
     src: url("fonts/SnackerComic.woff2") format("woff2"),
         url("fonts/SnackerComic.ttf") format("truetype"),
         url("fonts/SnackerComic.otf") format("opentype");
-    font-weight: 400;
+    font-weight: 410;
     font-display: swap;
 }
 
