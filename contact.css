@@ -1,11 +1,13 @@
 /* ===== Police ===== */
 @font-face {
-    font-family: "Snacker Comic";
-    src: url("fonts/SnackerComic.woff2") format("woff2"),
-        url("fonts/SnackerComic.ttf") format("truetype"),
-        url("fonts/SnackerComic.otf") format("opentype");
+    font-family: "Milany-Regular";
+    src: url("fonts/Milany-Regular.woff2") format("woff2"),
+        url("fonts/Milany-Regular.ttf") format("truetype"),
+        url("fonts/Milany-Regular.otf") format("opentype");
     font-weight: 410;
     font-display: swap;
+    size-adjust: 100%;
+    /* réglage global : 90% = tout plus petit, 110% = plus grand */
 }
 
 /* ===== Réglages (change les couleurs ici) ===== */
@@ -24,7 +26,7 @@
     /* vert foncé */
     --gris: #b2a7b8;
 
-    --titre: "Snacker Comic", "Comic Sans MS", "Chalkboard SE", cursive;
+    --titre: "Milany-Regular", "Comic Sans MS", "Chalkboard SE", cursive;
     --corps: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
     --trait: 3px solid var(--noir);
@@ -473,4 +475,134 @@ nav a[aria-current="page"] {
         animation: none !important;
         transition: none !important;
     }
+}
+
+/* =====================================================
+   TYPOGRAPHIE (police Milany-Regular)
+   Tout se règle ici : change une valeur et tous les textes suivent.
+   Astuce : si TOUT paraît trop gros ou trop petit, change plutôt
+   "size-adjust" dans @font-face tout en haut (ex. 90% ou 110%).
+   ===================================================== */
+:root {
+    --marge: clamp(1rem, 4vw, 1.5rem);
+
+    --t-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+    /* texte courant */
+    --t-lead: clamp(1.02rem, 0.95rem + 0.35vw, 1.15rem);
+    /* paragraphes d'intro */
+    --t-petit: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+    /* étiquettes, détails */
+    --t-logo: clamp(1.3rem, 1.1rem + 0.9vw, 1.6rem);
+    --t-menu: clamp(0.92rem, 0.82rem + 0.35vw, 1.05rem);
+    --t-bouton: clamp(1rem, 0.92rem + 0.35vw, 1.15rem);
+    --t-h1: clamp(2.2rem, 1.2rem + 4.6vw, 4.4rem);
+    --t-h2: clamp(1.45rem, 1.2rem + 1.1vw, 1.8rem);
+    --t-h3: clamp(1.2rem, 1.05rem + 0.7vw, 1.45rem);
+    --t-pied: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+}
+
+body {
+    font-size: var(--t-base);
+    line-height: 1.6;
+    font-synthesis: none;
+    /* évite le faux gras / faux italique moche */
+}
+
+p {
+    max-width: 60ch;
+}
+
+/* barre fixe : tout doit tenir sur une ligne propre */
+header {
+    gap: 0.5rem clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.logo {
+    font-size: var(--t-logo);
+}
+
+nav {
+    gap: 0.5rem clamp(0.4rem, 1vw, 0.75rem);
+}
+
+nav a,
+header nav a {
+    padding: 0.2rem clamp(0.6rem, 1.4vw, 0.9rem);
+    font-size: var(--t-menu);
+    white-space: nowrap;
+}
+
+.bouton,
+.bouton-cv {
+    font-size: var(--t-bouton);
+}
+
+.bouton-cv {
+    font-size: var(--t-menu);
+    white-space: nowrap;
+}
+
+/* titres */
+h1,
+h2,
+h3 {
+    font-weight: 400;
+    text-wrap: balance;
+}
+
+h2 {
+    max-width: 100%;
+    font-size: var(--t-h2);
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: var(--t-h3);
+}
+
+section {
+    padding: clamp(3rem, 6vw, 4rem) var(--gouttiere) clamp(2.5rem, 5vw, 3rem);
+}
+
+/* pied de page */
+footer {
+    font-size: var(--t-pied);
+}
+
+footer ul {
+    gap: 0.5rem clamp(1rem, 3vw, 1.75rem);
+}
+
+/* gros titres : l'ombre suit la taille du texte (en em) */
+#ecrire h1 {
+    font-size: var(--t-h1);
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+    text-shadow: 0.05em 0.05em 0 var(--accent);
+}
+
+#ecrire>p {
+    font-size: var(--t-lead);
+}
+
+/* page contact */
+label {
+    font-size: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+}
+
+.coordonnees {
+    font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+    overflow-wrap: anywhere;
+}
+
+#ecrire>* {
+    min-width: 0;
+}
+
+/* champs : 1rem minimum pour que le téléphone ne zoome pas */
+input,
+select,
+textarea {
+    font-size: 1rem;
 }

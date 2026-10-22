@@ -1,11 +1,13 @@
 /* ===== Police ===== */
 @font-face {
-    font-family: "Snacker Comic";
-    src: url("fonts/SnackerComic.woff2") format("woff2"),
-        url("fonts/SnackerComic.ttf") format("truetype"),
-        url("fonts/SnackerComic.otf") format("opentype");
+    font-family: "Milany-Regular";
+    src: url("fonts/Milany-Regular.woff2") format("woff2"),
+        url("fonts/Milany-Regular.ttf") format("truetype"),
+        url("fonts/Milany-Regular.otf") format("opentype");
     font-weight: 410;
     font-display: swap;
+    size-adjust: 100%;
+    /* réglage global : 90% = tout plus petit, 110% = plus grand */
 }
 
 /* ===== Réglages (change les couleurs ici) ===== */
@@ -24,8 +26,8 @@
     /* vert foncé */
     --gris: #b2a7b8;
 
-    --titre: "Chiffres du site", "Snacker Comic", "Comic Sans MS", "Chalkboard SE", cursive;
-    --corps: "Chiffres du site", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --titre: "Milany-Regular", "Comic Sans MS", "Chalkboard SE", cursive;
+    --corps: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
     --trait: 3px solid var(--noir);
     --ombre: 5px 5px 0 var(--noir);
@@ -55,8 +57,8 @@ body {
     background: var(--nuit);
     color: var(--noir);
     font-family: var(--corps);
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.0625rem);
+    line-height: 1.55;
 }
 
 img {
@@ -66,6 +68,7 @@ img {
 
 p {
     max-width: 65ch;
+    font-family: var(--corps);
 }
 
 a {
@@ -107,7 +110,7 @@ header {
     gap: 0.75rem;
     color: var(--blanc);
     font-family: var(--titre);
-    font-size: 1.7rem;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
     line-height: 1;
     text-decoration: none;
 }
@@ -130,7 +133,7 @@ header nav {
 
 header nav a {
     padding: 0.15rem 0.9rem;
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 1.8vw, 1.05rem);
 }
 
 .bouton-cv {
@@ -209,8 +212,9 @@ header nav a {
     margin: 0 0 0.5rem;
     font-family: var(--titre);
     font-weight: 400;
-    font-size: clamp(3rem, 9vw, 5.5rem);
-    line-height: 1;
+    font-size: clamp(2.5rem, 7.5vw, 5rem);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
     text-shadow: 4px 4px 0 var(--accent);
 }
 
@@ -220,7 +224,8 @@ header nav a {
 
 #accueil>p {
     margin: 0 0 1.75rem;
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-family: var(--corps);
 }
 
 #accueil>.bouton {
@@ -230,7 +235,7 @@ header nav a {
 /* --- visuel : <figure> avec photo blob, formes derrière et note --- */
 .hero-visuel {
     margin: 3rem auto 0;
-    width: min(100%, 26rem);
+    width: min(100%, 24rem);
 }
 
 .hero-visuel::before,
@@ -316,7 +321,7 @@ nav a {
     background: var(--blanc);
     color: var(--noir);
     font-family: var(--titre);
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
     text-decoration: none;
     transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
 }
@@ -343,7 +348,7 @@ nav a:focus-visible {
     background: var(--accent-2);
     color: var(--blanc);
     font-family: var(--titre);
-    font-size: 1.25rem;
+    font-size: clamp(1.05rem, 1.7vw, 1.25rem);
     text-decoration: none;
     box-shadow: var(--ombre);
     transition: transform 0.15s, box-shadow 0.15s;
@@ -365,7 +370,7 @@ section {
     --fond: var(--creme);
     --texte: var(--noir);
     position: relative;
-    padding: 4rem var(--gouttiere) 3rem;
+    padding: clamp(3rem, 6vw, 4rem) var(--gouttiere) clamp(2.5rem, 5vw, 3rem);
     background: var(--fond);
     color: var(--texte);
     scroll-margin-top: 5rem;
@@ -403,8 +408,8 @@ h2 {
     color: var(--blanc);
     font-family: var(--titre);
     font-weight: 400;
-    font-size: 1.9rem;
-    line-height: 1.3;
+    font-size: clamp(1.55rem, 3vw, 1.9rem);
+    line-height: 1.2;
     box-shadow: 4px 4px 0 var(--accent);
     transform: rotate(-1.5deg);
 }
@@ -425,7 +430,7 @@ h3 {
     color: var(--accent);
     font-family: var(--titre);
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
     line-height: 1.2;
 }
 
@@ -573,7 +578,7 @@ footer ul {
 /* ===== Grand écran : accueil en 2 colonnes ===== */
 @media (min-width: 52rem) {
     #accueil {
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, minmax(0, 1fr));
     }
 
     #accueil>.surtitre,
@@ -586,6 +591,7 @@ footer ul {
     .hero-visuel {
         grid-column: 8 / 13;
         grid-row: 1 / span 4;
+        width: min(100%, 24rem);
         margin: 0;
         justify-self: end;
     }
@@ -603,4 +609,165 @@ footer ul {
         animation: none !important;
         transition: none !important;
     }
+}
+
+/* =====================================================
+   TYPOGRAPHIE (police Milany-Regular)
+   Tout se règle ici : change une valeur et tous les textes suivent.
+   Astuce : si TOUT paraît trop gros ou trop petit, change plutôt
+   "size-adjust" dans @font-face tout en haut (ex. 90% ou 110%).
+   ===================================================== */
+:root {
+    --marge: clamp(1rem, 4vw, 1.5rem);
+
+    --t-base: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+    /* texte courant */
+    --t-lead: clamp(1.02rem, 0.95rem + 0.35vw, 1.15rem);
+    /* paragraphes d'intro */
+    --t-petit: clamp(0.85rem, 0.82rem + 0.15vw, 0.95rem);
+    /* étiquettes, détails */
+    --t-logo: clamp(1.3rem, 1.1rem + 0.9vw, 1.6rem);
+    --t-menu: clamp(0.92rem, 0.82rem + 0.35vw, 1.05rem);
+    --t-bouton: clamp(1rem, 0.92rem + 0.35vw, 1.15rem);
+    --t-h1: clamp(2.2rem, 1.2rem + 4.6vw, 4.4rem);
+    --t-h2: clamp(1.45rem, 1.2rem + 1.1vw, 1.8rem);
+    --t-h3: clamp(1.2rem, 1.05rem + 0.7vw, 1.45rem);
+    --t-pied: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem);
+}
+
+body {
+    font-size: var(--t-base);
+    line-height: 1.6;
+    font-synthesis: none;
+    /* évite le faux gras / faux italique moche */
+}
+
+p {
+    max-width: 60ch;
+}
+
+/* barre fixe : tout doit tenir sur une ligne propre */
+header {
+    gap: 0.5rem clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.logo {
+    font-size: var(--t-logo);
+}
+
+nav {
+    gap: 0.5rem clamp(0.4rem, 1vw, 0.75rem);
+}
+
+nav a,
+header nav a {
+    padding: 0.2rem clamp(0.6rem, 1.4vw, 0.9rem);
+    font-size: var(--t-menu);
+    white-space: nowrap;
+}
+
+.bouton,
+.bouton-cv {
+    font-size: var(--t-bouton);
+}
+
+.bouton-cv {
+    font-size: var(--t-menu);
+    white-space: nowrap;
+}
+
+/* titres */
+h1,
+h2,
+h3 {
+    font-weight: 400;
+    text-wrap: balance;
+}
+
+h2 {
+    max-width: 100%;
+    font-size: var(--t-h2);
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: var(--t-h3);
+}
+
+section {
+    padding: clamp(3rem, 6vw, 4rem) var(--gouttiere) clamp(2.5rem, 5vw, 3rem);
+}
+
+/* pied de page */
+footer {
+    font-size: var(--t-pied);
+}
+
+footer ul {
+    gap: 0.5rem clamp(1rem, 3vw, 1.75rem);
+}
+
+/* gros titres : l'ombre suit la taille du texte (en em) */
+#accueil h1 {
+    font-size: var(--t-h1);
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    overflow-wrap: anywhere;
+    text-shadow: 0.05em 0.05em 0 var(--accent);
+}
+
+/* accueil : textes du hero */
+#accueil>p {
+    font-size: var(--t-lead);
+}
+
+.surtitre {
+    font-size: var(--t-petit);
+    letter-spacing: 0.12em;
+}
+
+.note {
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+}
+
+#accueil>* {
+    min-width: 0;
+}
+
+/* cartes */
+article {
+    padding: clamp(1rem, 2vw, 1.25rem) clamp(1rem, 2.5vw, 1.5rem);
+    min-width: 0;
+}
+
+article p {
+    font-size: var(--t-base);
+}
+
+.tag {
+    font-size: var(--t-petit);
+}
+
+/* page projets */
+#projets {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+}
+
+#projets article>a,
+#projets article>a:hover {
+    font-size: var(--t-bouton);
+}
+
+#projets article>p {
+    font-size: var(--t-base);
+}
+
+#projets article>.tag {
+    font-size: var(--t-petit);
+}
+
+/* compétences en pastilles */
+#competences li {
+    font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+    padding: 0.25rem clamp(0.8rem, 2vw, 1.1rem);
 }
