@@ -600,7 +600,6 @@ label {
     min-width: 0;
 }
 
-/* champs : 1rem minimum pour que le téléphone ne zoome pas */
 input,
 select,
 textarea {
