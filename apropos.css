@@ -459,60 +459,32 @@ article img {
 }
 
 /* projets : grille de cartes sur fond sombre */
-#projets {
+#parcours {
+    padding-bottom: 5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
     gap: 1.75rem;
 }
 
-#projets>h2,
-#projets>p {
+#parcours>h2,
+#parcours>p {
     grid-column: 1 / -1;
     justify-self: start;
 }
 
-#projets article {
-    box-shadow: 6px 6px 0 var(--accent);
+#parcours article {
+    box-shadow: 6px 6px 0 var(--accent-2);
 }
 
-#projets article+article {
+#parcours article+article {
     margin-top: 0;
 }
 
-#projets article:hover {
+#parcours article:hover {
     transform: translate(-3px, -3px) rotate(-0.7deg);
-    box-shadow: 9px 9px 0 var(--accent-2);
+    box-shadow: 9px 9px 0 var(--accent);
 }
 
-/* ===== Compétences ===== */
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#competences ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-}
-
-#competences li {
-    padding: 0.3rem 1.1rem;
-    border: var(--trait);
-    border-radius: 999px;
-    background: var(--noir);
-    box-shadow: 4px 4px 0 var(--accent);
-    font-family: var(--titre);
-    font-size: 1.3rem;
-    transition: transform 0.15s, background 0.15s, color 0.15s;
-}
-
-#competences li:hover {
-    background: var(--accent);
-    color: var(--noir);
-    transform: rotate(-3deg);
-}
 
 /* ===== Contact (bloc vert) ===== */
 #contact a {
@@ -556,8 +528,10 @@ footer ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0;
     gap: 0.5rem 1.75rem;
     margin-bottom: 1.25rem;
+    list-style: none;
 }
 
 /* ===== Grand écran : accueil en 2 colonnes ===== */

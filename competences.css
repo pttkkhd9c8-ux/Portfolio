@@ -1,0 +1,595 @@
+/* ===== Police ===== */
+@font-face {
+    font-family: "Snacker Comic";
+    src: url("fonts/SnackerComic.woff2") format("woff2"),
+        url("fonts/SnackerComic.ttf") format("truetype"),
+        url("fonts/SnackerComic.otf") format("opentype");
+    font-weight: 410;
+    font-display: swap;
+}
+
+/* ===== Réglages (change les couleurs ici) ===== */
+:root {
+    --noir: #000;
+    --blanc: #fff;
+    --nuit: #1a1022;
+    /* fond des sections sombres */
+    --creme: #f4f0f7;
+    /* fond des sections claires */
+    --accent: #662d91;
+    /* violet */
+    --accent-2: #00927f;
+    /* vert clair */
+    --vert: #005d4e;
+    /* vert foncé */
+    --gris: #b2a7b8;
+
+    --titre: "Snacker Comic", "Comic Sans MS", "Chalkboard SE", cursive;
+    --corps: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --trait: 3px solid var(--noir);
+    --ombre: 5px 5px 0 var(--noir);
+    --largeur: 64rem;
+    --marge: 1.5rem;
+    --gouttiere: max(var(--marge), calc((100% - var(--largeur)) / 2 + var(--marge)));
+
+    /* forme "blob" organique, comme sur la maquette */
+    --blob: 58% 42% 55% 45% / 48% 56% 44% 52%;
+    /* bord ondulé entre les sections */
+    --vague: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C150 2 300 2 450 20S750 42 900 22 1100 4 1200 18V40Z'/%3E%3C/svg%3E");
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--nuit);
+    color: var(--noir);
+    font-family: var(--corps);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    max-width: 65ch;
+}
+
+a {
+    color: inherit;
+    text-decoration-color: var(--accent-2);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--accent-2);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent-2);
+    outline-offset: 3px;
+}
+
+/* ===== Barre fixe : nom | menu | bouton CV (reste en haut quand on scrolle) ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding: 0.75rem var(--gouttiere);
+    background: var(--nuit);
+    border-bottom: 4px solid var(--accent);
+    color: var(--blanc);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-size: 1.7rem;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--blanc);
+}
+
+.logo img {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    box-shadow: 3px 3px 0 var(--accent);
+    animation: pop 0.5s ease-out;
+}
+
+header nav {
+    justify-content: center;
+}
+
+header nav a {
+    padding: 0.15rem 0.9rem;
+    font-size: 1.05rem;
+}
+
+.bouton-cv {
+    padding: 0.25rem 1.1rem;
+    background: var(--blanc);
+    color: var(--noir);
+    font-size: 1rem;
+    box-shadow: 3px 3px 0 var(--accent-2);
+}
+
+.bouton-cv:hover,
+.bouton-cv:focus-visible {
+    color: var(--noir);
+    box-shadow: 5px 5px 0 var(--accent-2);
+}
+
+/* petit écran : le menu passe sur une 2e ligne */
+@media (max-width: 51.99rem) {
+    header nav {
+        order: 3;
+        flex-basis: 100%;
+    }
+}
+
+/* --- visuel : <figure> avec photo blob, formes derrière et note --- */
+.hero-visuel {
+    margin: 3rem auto 0;
+    width: min(100%, 26rem);
+}
+
+.hero-visuel::before,
+.hero-visuel::after {
+    content: "";
+    position: absolute;
+    border-radius: 45% 55% 40% 60% / 55% 40% 60% 45%;
+}
+
+/* grosse forme verte derrière la photo */
+.hero-visuel::before {
+    inset: 12% -8% -6% 14%;
+    background: var(--vert);
+    border: var(--trait);
+    transform: rotate(6deg);
+}
+
+/* contour fin */
+.hero-visuel::after {
+    inset: -5% 16% 8% -12%;
+    border: 3px solid var(--accent-2);
+    transform: rotate(-10deg);
+}
+
+.hero-visuel img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+}
+
+/* la petite note penchée = <figcaption class="note"> */
+.note {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    z-index: 2;
+    margin: 0;
+    color: var(--accent-2);
+    font-family: var(--titre);
+    font-size: 1.3rem;
+    line-height: 1.2;
+    transform: rotate(-8deg);
+}
+
+/* photo en forme de blob (class="blob") */
+img.blob {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: var(--trait);
+    border-radius: var(--blob);
+    box-shadow: 8px 8px 0 var(--accent);
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.6) rotate(-6deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.06) rotate(2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: none;
+    }
+}
+
+/* ===== Menu ===== */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border: var(--trait);
+    border-radius: 999px;
+    background: var(--blanc);
+    color: var(--noir);
+    font-family: var(--titre);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: var(--accent);
+    color: var(--blanc);
+    box-shadow: var(--ombre);
+    transform: rotate(-3deg) translateY(-3px);
+}
+
+/* ===== Boutons (ajoute class="bouton" à un lien) ===== */
+.bouton {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: var(--trait);
+    border-radius: 999px;
+    background: var(--accent-2);
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-size: 1.25rem;
+    text-decoration: none;
+    box-shadow: var(--ombre);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.bouton:hover,
+.bouton:focus-visible {
+    color: var(--blanc);
+    transform: translate(-2px, -2px) rotate(-1.5deg);
+    box-shadow: 7px 7px 0 var(--noir);
+}
+
+/* ===== Sections : alternance clair / sombre avec bord ondulé ===== */
+main {
+    margin: 0;
+}
+
+section {
+    --fond: var(--creme);
+    --texte: var(--noir);
+    position: relative;
+    padding: 4rem var(--gouttiere) 3rem;
+    background: var(--fond);
+    color: var(--texte);
+    scroll-margin-top: 5rem;
+}
+
+section:nth-of-type(odd) {
+    --fond: var(--nuit);
+    --texte: var(--blanc);
+}
+
+#contact {
+    --fond: var(--vert);
+    --texte: var(--blanc);
+}
+
+/* la vague au-dessus de chaque section */
+section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -39px;
+    height: 40px;
+    background: var(--fond);
+    -webkit-mask: var(--vague) center / 100% 100% no-repeat;
+    mask: var(--vague) center / 100% 100% no-repeat;
+}
+
+/* Titre de section : une étiquette penchée */
+h2 {
+    display: inline-block;
+    margin: 0 0 1.5rem;
+    padding: 0.2rem 1rem;
+    background: var(--noir);
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: 1.9rem;
+    line-height: 1.3;
+    box-shadow: 4px 4px 0 var(--accent);
+    transform: rotate(-1.5deg);
+}
+
+section:nth-of-type(odd) h2 {
+    background: var(--blanc);
+    color: var(--noir);
+}
+
+#contact h2 {
+    background: var(--blanc);
+    color: var(--noir);
+    box-shadow: 4px 4px 0 var(--accent-2);
+}
+
+h3 {
+    margin: 0 0 0.25rem;
+    color: var(--accent);
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+/* ===== Contact (bloc vert) ===== */
+#contact a {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration-color: var(--blanc);
+}
+
+#contact a:hover {
+    color: var(--blanc);
+    text-decoration-color: var(--accent);
+}
+
+#contact .bouton {
+    background: var(--accent);
+    text-decoration: none;
+}
+
+/* ===== Pied de page ===== */
+footer {
+    padding: 3rem var(--gouttiere);
+    background: var(--noir);
+    border-top: 8px solid var(--accent);
+    color: var(--blanc);
+    text-align: center;
+    font-family: var(--titre);
+    font-size: 1.3rem;
+}
+
+footer p {
+    max-width: none;
+    margin: 0;
+}
+
+footer a {
+    color: var(--blanc);
+    text-decoration-color: var(--accent-2);
+}
+
+footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.75rem;
+    padding: 0;
+    margin-bottom: 1.25rem;
+    list-style: none;
+}
+
+/* ===== Page À propos : présentation (texte + photo) ===== */
+#presentation {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem 3rem;
+    align-items: center;
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
+    background-image: linear-gradient(rgb(26 16 34 / 0.82), rgb(26 16 34 / 0.82)),
+        url("images/fond.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#presentation::before {
+    display: none;
+}
+
+#presentation>* {
+    position: relative;
+    z-index: 1;
+}
+
+#presentation h1 {
+    margin: 0;
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 4.5rem);
+    line-height: 1;
+    text-shadow: 4px 4px 0 var(--accent);
+}
+
+#presentation h1 span {
+    color: var(--accent-2);
+}
+
+#presentation p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+#presentation .bouton {
+    justify-self: start;
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 52rem) {
+    #presentation {
+        grid-template-columns: 1.2fr 1fr;
+    }
+
+    #presentation>:not(figure) {
+        grid-column: 1;
+    }
+
+    #presentation .hero-visuel {
+        grid-column: 2;
+        grid-row: 1 / span 5;
+        margin: 0;
+        justify-self: end;
+    }
+}
+
+/* page courante dans le menu */
+nav a[aria-current="page"] {
+    background: var(--accent);
+    color: var(--blanc);
+}
+
+/* ===== Compétences en ronds + barres de niveau (ajoute class="niveaux" sur le <ul>) ===== */
+@media (min-width: 52rem) {
+    #competences:has(ul.niveaux) {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 2rem;
+        align-items: center;
+    }
+
+    #competences:has(ul.niveaux)>:not(ul) {
+        grid-column: 1 / 5;
+        justify-self: start;
+    }
+
+    #competences:has(ul.niveaux)>ul {
+        grid-column: 5 / 13;
+        grid-row: 1 / span 4;
+    }
+}
+
+#competences ul.niveaux {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+    gap: 2rem 1.25rem;
+}
+
+/* chaque compétence : rond, nom, barre, pourcentage */
+#competences ul.niveaux li {
+    display: grid;
+    justify-items: center;
+    gap: 0.6rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--texte);
+    font-size: 1.2rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+#competences ul.niveaux li:hover {
+    background: transparent;
+    color: var(--texte);
+    transform: none;
+}
+
+/* le rond avec l'icône (<span class="rond">) */
+.rond {
+    display: grid;
+    place-items: center;
+    width: 5rem;
+    height: 5rem;
+    border: var(--trait);
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 4px 4px 0 var(--noir);
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-size: 1.7rem;
+    transition: transform 0.2s;
+}
+
+.rond img {
+    width: 55%;
+    height: auto;
+}
+
+#competences ul.niveaux li:nth-child(even) .rond {
+    background: var(--accent-2);
+}
+
+#competences ul.niveaux li:hover .rond {
+    transform: rotate(-8deg) scale(1.08);
+}
+
+/* barre de niveau : <progress max="100" value="90"> */
+#competences progress {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 0.9rem;
+    border: 3px solid var(--noir);
+    border-radius: 999px;
+    background: var(--blanc);
+    overflow: hidden;
+}
+
+#competences progress::-webkit-progress-bar {
+    background: var(--blanc);
+}
+
+#competences progress::-webkit-progress-value {
+    background: var(--accent-2);
+}
+
+#competences progress::-moz-progress-bar {
+    background: var(--accent-2);
+}
+
+/* pourcentage affiché sous la barre : <li data-niveau="90%"> */
+#competences ul.niveaux li[data-niveau]::after {
+    content: attr(data-niveau);
+    justify-self: end;
+    margin-top: -0.3rem;
+    font-family: var(--titre);
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* ===== Accessibilité : pas d'animation si le visiteur la refuse ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

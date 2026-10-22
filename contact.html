@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact – Léo</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+    <!-- Barre fixe -->
+    <header>
+        <a class="logo" href="index.html">
+            <img src="images/PDP.png" alt="Logo de Léo">
+            Léo
+        </a>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="projets.html">Projets</a>
+            <a href="competences.html">Compétences</a>
+            <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+
+        <a class="bouton bouton-cv" href="cv.pdf" download>Télécharger mon CV</a>
+    </header>
+
+    <main>
+
+        <section id="ecrire">
+            <h1>Parlons de <span>ton projet</span></h1>
+            <p>Une idée, une question ou juste envie de dire bonjour ? Remplis le formulaire, je te réponds dès que
+                possible.</p>
+
+            <ul class="coordonnees">
+                <li><a href="mailto:l.breuinin@outlook.fr">l.breuinin@outlook.fr</a></li>
+                <li>Calais, France<br>Lille, France</li>
+            </ul>
+
+            <!-- Formulaire : chaque champ est dans son <label> -->
+            <form action="mailto:l.breuinin@outlook.fr" method="post" enctype="text/plain">
+                <label>
+                    Ton nom
+                    <input type="text" name="nom" placeholder="Ton prénom et nom" autocomplete="name" required>
+                </label>
+
+                <label>
+                    Ton e-mail
+                    <input type="email" name="email" placeholder="toi@exemple.fr" autocomplete="email" required>
+                </label>
+
+                <label>
+                    Sujet
+                    <select name="sujet">
+                        <option>Un projet de site web</option>
+                        <option>Un travail de graphisme</option>
+                        <option>Une question</option>
+                        <option>Autre chose</option>
+                    </select>
+                </label>
+
+                <label>
+                    Ton message
+                    <textarea name="message" rows="6" placeholder="Raconte-moi ton idée…" required></textarea>
+                </label>
+
+                <button class="bouton" type="submit">Envoyer →</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p>© 2026 Léo – Tous droits réservés.</p>
+    </footer>
+
+</body>
+
+</html>

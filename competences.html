@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compétences – Léo</title>
+    <link rel="stylesheet" href="competences.css">
+</head>
+
+<body>
+
+    <!-- Barre fixe -->
+    <header>
+        <a class="logo" href="index.html">
+            <img src="images/PDP.png" alt="Photo de Léo">
+            Léo
+        </a>
+
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="projets.html">Projets</a>
+            <a href="competences.html" aria-current="page">Compétences</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a class="bouton bouton-cv" href="cv.pdf" download>Télécharger mon CV</a>
+    </header>
+
+    <main>
+
+        <!-- Présentation de la page : texte + mascotte -->
+        <section id="presentation">
+            <h1>Mes <span>compétences</span></h1>
+            <p>
+                Je suis à la fois graphiste et développeur web : je dessine mes idées avec
+                la suite Adobe, puis je les transforme en vrai site dans VS Code.
+            </p>
+            <p>
+                Je suis en première année de DEUST Webmaster à Calais, donc je continue
+                d’apprendre chaque jour.
+            </p>
+            <a class="bouton" href="projets.html">Voir mes projets →</a>
+
+            <figure class="hero-visuel">
+                <img src="images/mascotte.png" alt="Mascotte du portfolio">
+                <figcaption class="note">Toujours<br>en train<br>d’apprendre !</figcaption>
+            </figure>
+        </section>
+
+        <!-- Les compétences en ronds + barres de niveau -->
+        <section id="competences">
+            <h2>Des outils pour créer</h2>
+            <p>Les technologies et les logiciels que j’utilise pour donner vie à mes projets.</p>
+
+            <ul class="niveaux">
+                <li data-niveau="90%">
+                    <span class="rond">H</span>
+                    HTML
+                    <progress max="100" value="90">90%</progress>
+                </li>
+                <li data-niveau="85%">
+                    <span class="rond">C</span>
+                    CSS
+                    <progress max="100" value="85">85%</progress>
+                </li>
+                <li data-niveau="80%">
+                    <span class="rond">Ad</span>
+                    Suite Adobe
+                    <progress max="100" value="80">80%</progress>
+                </li>
+                <li data-niveau="85%">
+                    <span class="rond">VS</span>
+                    VS Code
+                    <progress max="100" value="85">85%</progress>
+                </li>
+                <li data-niveau="75%">
+                    <span class="rond">W</span>
+                    Web design
+                    <progress max="100" value="75">75%</progress>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Un projet en tête ?</h2>
+            <p>Je serais ravi d’en discuter.</p>
+            <a class="bouton" href="mailto:l.breuinin@outlook.fr">Écris-moi →</a>
+        </section>
+
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p>© 2026 Léo – Tous droits réservés.</p>
+    </footer>
+
+</body>
+
+</html>

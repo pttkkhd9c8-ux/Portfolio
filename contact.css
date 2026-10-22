@@ -1,0 +1,476 @@
+/* ===== Police ===== */
+@font-face {
+    font-family: "Snacker Comic";
+    src: url("fonts/SnackerComic.woff2") format("woff2"),
+        url("fonts/SnackerComic.ttf") format("truetype"),
+        url("fonts/SnackerComic.otf") format("opentype");
+    font-weight: 410;
+    font-display: swap;
+}
+
+/* ===== Réglages (change les couleurs ici) ===== */
+:root {
+    --noir: #000;
+    --blanc: #fff;
+    --nuit: #1a1022;
+    /* fond des sections sombres */
+    --creme: #f4f0f7;
+    /* fond des sections claires */
+    --accent: #662d91;
+    /* violet */
+    --accent-2: #00927f;
+    /* vert clair */
+    --vert: #005d4e;
+    /* vert foncé */
+    --gris: #b2a7b8;
+
+    --titre: "Snacker Comic", "Comic Sans MS", "Chalkboard SE", cursive;
+    --corps: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    --trait: 3px solid var(--noir);
+    --ombre: 5px 5px 0 var(--noir);
+    --largeur: 64rem;
+    --marge: 1.5rem;
+    --gouttiere: max(var(--marge), calc((100% - var(--largeur)) / 2 + var(--marge)));
+
+    /* forme "blob" organique, comme sur la maquette */
+    --blob: 58% 42% 55% 45% / 48% 56% 44% 52%;
+    /* bord ondulé entre les sections */
+    --vague: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 40V22C150 2 300 2 450 20S750 42 900 22 1100 4 1200 18V40Z'/%3E%3C/svg%3E");
+}
+
+/* ===== Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--nuit);
+    color: var(--noir);
+    font-family: var(--corps);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    max-width: 65ch;
+}
+
+a {
+    color: inherit;
+    text-decoration-color: var(--accent-2);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    color: var(--accent-2);
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent-2);
+    outline-offset: 3px;
+}
+
+/* ===== Barre fixe : nom | menu | bouton CV (reste en haut quand on scrolle) ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding: 0.75rem var(--gouttiere);
+    background: var(--nuit);
+    border-bottom: 4px solid var(--accent);
+    color: var(--blanc);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-size: 1.7rem;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--blanc);
+}
+
+.logo img {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    box-shadow: 3px 3px 0 var(--accent);
+    animation: pop 0.5s ease-out;
+}
+
+header nav {
+    justify-content: center;
+}
+
+header nav a {
+    padding: 0.15rem 0.9rem;
+    font-size: 1.05rem;
+}
+
+.bouton-cv {
+    padding: 0.25rem 1.1rem;
+    background: var(--blanc);
+    color: var(--noir);
+    font-size: 1rem;
+    box-shadow: 3px 3px 0 var(--accent-2);
+}
+
+.bouton-cv:hover,
+.bouton-cv:focus-visible {
+    color: var(--noir);
+    box-shadow: 5px 5px 0 var(--accent-2);
+}
+
+/* petit écran : le menu passe sur une 2e ligne */
+@media (max-width: 51.99rem) {
+    header nav {
+        order: 3;
+        flex-basis: 100%;
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.6) rotate(-6deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.06) rotate(2deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: none;
+    }
+}
+
+/* ===== Menu ===== */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border: var(--trait);
+    border-radius: 999px;
+    background: var(--blanc);
+    color: var(--noir);
+    font-family: var(--titre);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    background: var(--accent);
+    color: var(--blanc);
+    box-shadow: var(--ombre);
+    transform: rotate(-3deg) translateY(-3px);
+}
+
+/* ===== Boutons (ajoute class="bouton" à un lien) ===== */
+.bouton {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: var(--trait);
+    border-radius: 999px;
+    background: var(--accent-2);
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-size: 1.25rem;
+    text-decoration: none;
+    box-shadow: var(--ombre);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.bouton:hover,
+.bouton:focus-visible {
+    color: var(--blanc);
+    transform: translate(-2px, -2px) rotate(-1.5deg);
+    box-shadow: 7px 7px 0 var(--noir);
+}
+
+/* ===== Sections : alternance clair / sombre avec bord ondulé ===== */
+main {
+    margin: 0;
+}
+
+section {
+    --fond: var(--creme);
+    --texte: var(--noir);
+    position: relative;
+    padding: 4rem var(--gouttiere) 3rem;
+    background: var(--fond);
+    color: var(--texte);
+    scroll-margin-top: 5rem;
+}
+
+section:nth-of-type(odd) {
+    --fond: var(--nuit);
+    --texte: var(--blanc);
+}
+
+/* la vague au-dessus de chaque section */
+section::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -39px;
+    height: 40px;
+    background: var(--fond);
+    -webkit-mask: var(--vague) center / 100% 100% no-repeat;
+    mask: var(--vague) center / 100% 100% no-repeat;
+}
+
+/* Titre de section : une étiquette penchée */
+h2 {
+    display: inline-block;
+    margin: 0 0 1.5rem;
+    padding: 0.2rem 1rem;
+    background: var(--noir);
+    color: var(--blanc);
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: 1.9rem;
+    line-height: 1.3;
+    box-shadow: 4px 4px 0 var(--accent);
+    transform: rotate(-1.5deg);
+}
+
+section:nth-of-type(odd) h2 {
+    background: var(--blanc);
+    color: var(--noir);
+}
+
+h3 {
+    margin: 0 0 0.25rem;
+    color: var(--accent);
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.2;
+}
+
+/* ===== Pied de page ===== */
+footer {
+    padding: 3rem var(--gouttiere);
+    background: var(--noir);
+    border-top: 8px solid var(--accent);
+    color: var(--blanc);
+    text-align: center;
+    font-family: var(--titre);
+    font-size: 1.3rem;
+}
+
+footer p {
+    max-width: none;
+    margin: 0;
+}
+
+footer a {
+    color: var(--blanc);
+    text-decoration-color: var(--accent-2);
+}
+
+footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    gap: 0.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+    list-style: none;
+}
+
+/* ===== Page Contact : texte à gauche, formulaire à droite ===== */
+#ecrire {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem 3rem;
+    align-items: start;
+    padding-top: 3.5rem;
+    background-image: linear-gradient(rgb(26 16 34 / 0.82), rgb(26 16 34 / 0.82)),
+        url("images/fond.jpg");
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 5rem;
+}
+
+#ecrire::before {
+    display: none;
+}
+
+#ecrire h1 {
+    margin: 0;
+    font-family: var(--titre);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 4.5rem);
+    line-height: 1;
+    text-shadow: 4px 4px 0 var(--accent);
+}
+
+#ecrire h1 span {
+    color: var(--accent-2);
+}
+
+#ecrire>p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* coordonnées */
+.coordonnees {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    font-family: var(--titre);
+    font-size: 1.25rem;
+}
+
+.coordonnees li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.coordonnees li::before {
+    content: "";
+    flex: none;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 3px solid var(--blanc);
+    border-radius: 50%;
+    background: var(--accent-2);
+}
+
+/* --- le formulaire : une carte façon bande dessinée --- */
+form {
+    display: grid;
+    gap: 1.25rem;
+    padding: 1.75rem 1.5rem;
+    border: var(--trait);
+    border-radius: 1rem;
+    background: var(--blanc);
+    box-shadow: 8px 8px 0 var(--accent);
+    color: var(--noir);
+}
+
+label {
+    display: grid;
+    gap: 0.35rem;
+    font-family: var(--titre);
+    font-size: 1.15rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: var(--trait);
+    border-radius: 0.6rem;
+    background: var(--creme);
+    color: var(--noir);
+    font: inherit;
+    font-family: var(--corps);
+    font-size: 1rem;
+    transition: box-shadow 0.15s, background 0.15s;
+}
+
+textarea {
+    min-height: 9rem;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #7d7387;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    background: var(--blanc);
+    box-shadow: 4px 4px 0 var(--accent-2);
+}
+
+/* champ invalide, une fois que le visiteur l'a rempli */
+input:user-invalid,
+textarea:user-invalid {
+    border-color: #c0392b;
+    box-shadow: 4px 4px 0 #c0392b;
+}
+
+form .bouton {
+    justify-self: start;
+    cursor: pointer;
+}
+
+/* grand écran : deux colonnes */
+@media (min-width: 52rem) {
+    #ecrire {
+        grid-template-columns: 1fr 1.1fr;
+    }
+
+    #ecrire>:not(form) {
+        grid-column: 1;
+    }
+
+    #ecrire>form {
+        grid-column: 2;
+        grid-row: 1 / span 4;
+    }
+}
+
+/* page courante dans le menu */
+nav a[aria-current="page"] {
+    background: var(--accent);
+    color: var(--blanc);
+}
+
+/* ===== Accessibilité : pas d'animation si le visiteur la refuse ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

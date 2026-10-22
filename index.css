@@ -24,8 +24,8 @@
     /* vert foncé */
     --gris: #b2a7b8;
 
-    --titre: "Snacker Comic", "Comic Sans MS", "Chalkboard SE", cursive;
-    --corps: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --titre: "Chiffres du site", "Snacker Comic", "Comic Sans MS", "Chalkboard SE", cursive;
+    --corps: "Chiffres du site", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
     --trait: 3px solid var(--noir);
     --ombre: 5px 5px 0 var(--noir);
@@ -206,7 +206,7 @@ header nav a {
 }
 
 #accueil h1 {
-    margin: 0 0 1.25rem;
+    margin: 0 0 0.5rem;
     font-family: var(--titre);
     font-weight: 400;
     font-size: clamp(3rem, 9vw, 5.5rem);
@@ -319,6 +319,11 @@ nav a {
     font-size: 1.2rem;
     text-decoration: none;
     transition: transform 0.15s, box-shadow 0.15s, background 0.15s, color 0.15s;
+}
+
+header nav a[href="#accueil"] {
+    background: var(--accent);
+    color: var(--blanc);
 }
 
 nav a:hover,
