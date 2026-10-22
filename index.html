@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="index.css">
 
 <head>
     <meta charset="UTF-8">
@@ -12,48 +12,34 @@
 <body>
 
     <header>
-        <h1>Léo</h1>
-        <p>Développeur web et graphiste</p>
+        <a class="logo" href="#accueil">
+            <img src="images/PDP.png" alt="Portrait de Léo">
+            Léo
+        </a>
+
         <nav>
-            <a href="#a-propos">À propos</a>
-            <a href="#competences">Compétences</a>
-            <a href="#parcours">Parcours</a>
-            <a href="#projets">Projets</a>
-            <a href="#contact">Contact</a>
+            <a href="#accueil">Accueil</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="projets.html">Projets</a>
+            <a href="competences.html">Compétences</a>
+            <a href="contact.html">Contact</a>
         </nav>
+
+        <a class="bouton bouton-cv" href="cv.pdf" download>Télécharger mon CV</a>
     </header>
 
     <main>
 
-        <section id="a-propos">
-            <h2>À propos</h2>
-            <p>Je suis un jeune développeur web et graphiste.</p>
-        </section>
+        <section id="accueil">
+            <p class="surtitre">Web designer &amp; développeur</p>
+            <h1>Bonjour,<br>je suis <span>Léo</span></h1>
+            <p>Je crée des sites web modernes, esthétiques et performants.</p>
+            <a class="bouton" href="#projets">Découvrir mes projets →</a>
 
-        <section id="competences">
-            <h2>Compétences</h2>
-            <ul>
-                <li>Suite Adobe</li>
-                <li>VS Code</li>
-            </ul>
-        </section>
-
-        <section id="parcours">
-            <h2>Parcours</h2>
-            <article>
-                <h3>DEUST Webmaster – 1re année</h3>
-                <p>Calais</p>
-                <p>En première année de DEUST Webmaster à Calais, je découvre les différentes étapes de la création d’un
-                    site web, de sa conception à sa mise en ligne. Je développe notamment mes compétences en intégration
-                    web, en création graphique et en utilisation des outils numériques.</p>
-                <p>Cette formation me permet de consolider mes bases et de réaliser des projets concrets, tout en
-                    explorant les domaines du développement web et du graphisme.</p>
-            </article>
-        </section>
-
-        <section id="projets">
-            <h2>Projets</h2>
-            <p>Mes projets arrivent bientôt. Ca va aller</p>
+            <figure class="hero-visuel">
+                <img class="blob" src="images/moi.jpeg" alt="Portrait de Léo">
+                <figcaption class="note">Designer<br>Dev<br>Curieux</figcaption>
+            </figure>
         </section>
 
         <section id="contact">
