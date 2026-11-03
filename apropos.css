@@ -771,6 +771,21 @@ article p {
     font-size: var(--t-base);
 }
 
+article.a-venir {
+    display: grid;
+    place-content: center;
+    min-height: 14rem;
+    border-style: dashed;
+    background: var(--blanc);
+    box-shadow: none;
+    text-align: center;
+}
+
+article.a-venir:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 .tag {
     font-size: var(--t-petit);
 }

@@ -443,7 +443,7 @@ footer ul {
     margin: 0;
     font-family: var(--titre);
     font-weight: 400;
-    font-size: clamp(2.6rem, 8vw, 4.5rem);
+    font-size: clam p(2.6rem, 8vw, 4.5rem);
     line-height: 1;
     text-shadow: 4px 4px 0 var(--accent);
 }
