@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Exile&family=Instrument+Serif:ital@0;1&family=Rye&display=swap');
+
+@theme {
+    --color-marque: #e11d48;
+    --font-titre: "Poppins", sans-serif;
+}
